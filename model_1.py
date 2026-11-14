@@ -71,4 +71,3 @@ print("internal state",internal_state)
 
 # Conclusion:
 # Thus, we successfully implemented a Model-Based Intelligent Agent using Python. The agent maintains an internal state, identifies and avoids obstacles, remembers its previously visited positions, and makes suitable movement decisions to navigate towards the goal.
-# Thus, we successfully implemented the A* Search algorithm for the 8-puzzle problem using Python. The algorithm uses the heuristic function and path cost to find the optimal solution with minimum moves.
