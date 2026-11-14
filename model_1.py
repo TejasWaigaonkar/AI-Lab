@@ -1,33 +1,48 @@
+# Create a 3x3 grid (0 = Empty, 1 = Obstacle)
 grid = [
     [0,0,0],
     [1,1,0],
     [0,0,0]
 ]
 
+# Initialize starting position, goal and internal state
 agent = [0,0]
-goal = [2,2]
+goal = [1,2]
 internal_state = []
+
 print("agent start at:",agent)
 
+# Continue until agent reaches the goal
 while agent != goal:
+
+    # Store current position in internal state
     internal_state.append(agent.copy())
 
+    # Get current row and column
     row = agent[0]
     col = agent[1]
 
-    if col+1<3 and grid[row][col+1] == 0:
-        agent[1] = agent[1]+1
+    # Check if right cell is free
+    if col + 1 < 3 and grid[row][col+1] == 0:
+        agent[1] = agent[1] + 1
 
-    elif row+1<3 and grid[row+1][col] == 0:
-        agent[0]=agent[0]+1
+    # If right is blocked, check downward cell
+    elif row + 1 < 3 and grid[row + 1][col] == 0:
+        agent[0] = agent[0] + 1
 
+    # If both directions are blocked, stop
     else:
         print("agent is blocked",agent)
         break
+
+    # Display updated agent position
     print("agent moved to",agent)
 
+# Check whether the goal is reached
 if agent == goal:
     print("agent reached goal",agent)
+
+# Display all previously visited positions
 print("internal state",internal_state)
 
 
