@@ -42,22 +42,17 @@ print("internal state",internal_state)
 # 5. To remember previously visited positions and make suitable decisions.
 
 # Theory
-# A Model-Based Intelligent Agent is an AI agent that maintains an internal representation of its environment to make decisions. It uses current observations and previously stored information to select suitable actions.
-# In this experiment, the agent navigates a 2D grid from a starting position [0,0] to a goal position [2,2]. It avoids obstacles (represented by 1) and moves through empty cells (represented by 0). The agent maintains an internal state to store its previously visited positions. It first tries to move right and then down if the right path is blocked.
+# A Model-Based Intelligent Agent is an AI agent that maintains an internal representation of its environment to make intelligent decisions. It uses information about the current environment and its previous states to decide the next action.
+# In this experiment, the agent navigates a 2D grid from a starting position [0,0] to a goal position [2,2]. The grid contains obstacles (1) and free paths (0). The agent checks available paths, avoids obstacles, and stores its previously visited positions in an internal state. It moves right whenever possible; otherwise, it tries to move down until it reaches the goal or gets blocked.
 
-# Algorithm:
-# 1. Create a 3x3 grid containing empty cells (0) and obstacles (1).
-# 2. Initialize the agent's position at [0,0].
-# 3. Set the goal position to [2,2].
-# 4. Initialize an empty list to maintain the internal state.
-# 5. Store the current agent position in the internal state.
-# 6. Check whether the right cell is within the grid and is not an obstacle.
-# 7. If the right cell is free, move the agent right.
-# 8. Otherwise, check whether the bottom cell is within the grid and is not an obstacle.
-# 9. If the bottom cell is free, move the agent down.
-# 10. If both directions are blocked, stop the agent.
-# 11. Repeat until the agent reaches the goal or gets blocked.
-# 12. Display the final position and internal state.
+# # Algorithm
+# 1. Initialize a 3×3 grid with obstacles and free cells.
+# 2. Set the agent's starting position and goal position.
+# 3. Initialize an empty list to store the agent's internal state.
+# 4. Check the right and downward cells for possible movement.
+# 5. Move to a free cell and update the internal state.
+# 6. Repeat until the goal is reached or the agent gets blocked.
+# 7. Display the final position and internal state.
 
 # Conclusion:
 # Thus, we successfully implemented a Model-Based Intelligent Agent using Python. The agent maintains an internal state, identifies and avoids obstacles, remembers its previously visited positions, and makes suitable movement decisions to navigate towards the goal.
