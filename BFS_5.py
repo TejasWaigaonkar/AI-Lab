@@ -74,18 +74,6 @@ if path:
 else:
     print("No Path Found!")
 
-# Find and display path
-path = bfs()
-
-if path:
-    print("Path Found:")
-    for position in path:
-        print(position)
-
-    print("Total Moves:", len(path) - 1)
-else:
-    print("No Path Found!")
-
 
 # Aim
 # To implement Breadth First Search (BFS) to solve a robot path-planning problem in Python using a grid containing obstacles.
