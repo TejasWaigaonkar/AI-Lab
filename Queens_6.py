@@ -1,4 +1,3 @@
-
 # 8 Queens using Backtracking
 
 N = 8
@@ -6,38 +5,55 @@ N = 8
 # Create an empty chessboard
 board = [[0 for i in range(N)] for j in range(N)]
 
-# Check whether position is safe
+
+# Check whether queen can be placed safely
 def safe(row, col):
+
     for i in range(row):
+
+        # Check same column
         if board[i][col] == 1:
             return False
 
-        if col - (row-i) >= 0 and board[i][col-(row-i)] == 1:
-            return False
+        # Check left diagonal
+        if col - (row - i) >= 0:
+            if board[i][col - (row - i)] == 1:
+                return False
 
-        if col + (row-i) < N and board[i][col+(row-i)] == 1:
-            return False
+        # Check right diagonal
+        if col + (row - i) < N:
+            if board[i][col + (row - i)] == 1:
+                return False
 
     return True
 
-# Solve using backtracking
+
+# Solve the problem using backtracking
 def solve(row):
+
+    # All queens are placed
     if row == N:
         return True
 
+    # Try every column in the current row
     for col in range(N):
+
         if safe(row, col):
+
+            # Place queen
             board[row][col] = 1
 
+            # Move to the next row
             if solve(row + 1):
                 return True
 
-            # Backtrack
+            # Remove queen if solution is not found
             board[row][col] = 0
 
     return False
 
-# Display solution
+
+# Display the solution
 if solve(0):
     print("Solution Found!")
     for row in board:
