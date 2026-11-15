@@ -3,7 +3,7 @@ grid = [
     [0,0,0],
     [1,1,0],
     [0,0,0]
-]
+] 
 
 # Initialize starting position, goal and internal state
 agent = [0,0]
