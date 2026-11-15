@@ -1,7 +1,7 @@
 
 # Intelligent Number Guessing Agent
 
-# Hidden number
+# Hidden number 
 number = 75
 
 # Set range
