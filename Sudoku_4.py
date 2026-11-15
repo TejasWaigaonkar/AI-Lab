@@ -1,6 +1,4 @@
 
-# Sudoku Solver using Backtracking
-
 # 0 represents an empty cell
 board = [
     [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -14,75 +12,93 @@ board = [
     [0, 0, 0, 0, 8, 0, 0, 7, 9]
 ]
 
-# Check whether number is safe
+print("Original Sudoku:")
+for row in board:
+    print(row)
+
+# Check whether a number can be placed safely
 def valid(r, c, n):
+
+    # Check the row and column
     for i in range(9):
         if board[r][i] == n or board[i][c] == n:
             return False
 
+    # Check the 3x3 box
     for i in range(3):
         for j in range(3):
             if board[r//3*3+i][c//3*3+j] == n:
                 return False
 
+    # Number is valid
     return True
 
-# Solve the Sudoku
+
+# Solve Sudoku using backtracking
 def solve():
+
+    # Check every row and column
     for r in range(9):
         for c in range(9):
 
+            # Find an empty cell
             if board[r][c] == 0:
+
+                # Try numbers from 1 to 9
                 for n in range(1, 10):
 
+                    # Check whether number is valid
                     if valid(r, c, n):
+
+                        # Place the number
                         board[r][c] = n
 
+                        # Recursively solve next empty cell
                         if solve():
                             return True
 
-                        # Backtrack
+                        # Backtrack if solution is not found
                         board[r][c] = 0
 
+                # No valid number found
                 return False
 
+    # All cells are filled
     return True
 
-# Print solution
+
+# Print the solved Sudoku
 if solve():
-    print("Sudoku Solved!")
+    print("\nSudoku Solved!")
     for row in board:
         print(row)
 else:
     print("No Solution!")
 
 
-
 # Aim
-# To implement a Sudoku solver using backtracking and constraint propagation techniques in Python.
+# To implement a Sudoku solver using Python and the backtracking technique to solve a 9x9 Sudoku puzzle.
 
 # Objectives
-# 1. To understand the backtracking algorithm.
-# 2. To solve a Sudoku puzzle automatically.
-# 3. To apply constraints to avoid invalid numbers.
-# 4. To find a valid solution for the given Sudoku puzzle.
+# 1. To understand the working of the backtracking algorithm.
+# 2. To identify empty cells in a Sudoku grid.
+# 3. To check valid numbers in rows, columns, and 3x3 boxes.
+# 4. To fill empty cells with valid numbers from 1 to 9.
+# 5. To solve the Sudoku puzzle by applying backtracking.
 
 # Theory
-# Sudoku is a number-placement puzzle consisting of a 9×9 grid. The objective is to fill empty cells with numbers from 1 to 9.
-# Each row, column, and 3×3 box must contain numbers from 1 to 9 without repetition.
-# Backtracking tries possible numbers one by one and goes back whenever a number violates the rules. Constraint propagation checks the possible valid numbers for empty cells and reduces unnecessary choices.
+# Sudoku is a number-placement puzzle consisting of a 9x9 grid. The objective is to fill all empty cells with numbers from 1 to 9 without repeating numbers in any row, column, or 3x3 box.
+# In this experiment, the backtracking technique is used to solve the Sudoku puzzle. The program finds an empty cell and tries numbers from 1 to 9. It checks whether each number is valid according to Sudoku rules. If a number is valid, it is placed in the cell and the program moves to the next empty cell. If no valid solution is found, the program goes back, removes the previously placed number, and tries another number. This process continues until the puzzle is solved.
 
 # Algorithm
-# 1. Start the program.
-# 2. Create a 9×9 Sudoku grid with empty cells represented by 0.
-# 3. Find an empty cell in the grid.
-# 4. Try numbers from 1 to 9.
-# 5. Check whether the number is valid in its row, column, and 3×3 box.
-# 6. If valid, place the number in the cell.
-# 7. Repeat the process for the next empty cell.
-# 8. If no number is valid, remove the previous number and try another number (Backtracking).
-# 9. Continue until all cells are filled.
-# 10. Display the solved Sudoku and stop.
+# 1. Create a 9x9 Sudoku grid with empty cells represented by 0.
+# 2. Check each row and column to find an empty cell.
+# 3. Try numbers from 1 to 9 in the empty cell.
+# 4. Check whether the number is valid in its row, column, and 3x3 box.
+# 5. If valid, place the number and call the solve function again.
+# 6. If the solution fails, reset the cell to 0 (Backtracking).
+# 7. Repeat until all cells are filled.
+# 8. Display the solved Sudoku or print no solution.
 
 # Conclusion
-# Thus, we successfully implemented a Sudoku solver using Python and the backtracking technique. The program checks the Sudoku constraints, tries valid numbers, and backtracks whenever an invalid choice is made to find the correct solution.
+# Thus, we successfully implemented a Sudoku solver using Python and the backtracking technique. The program checks row, column, and 3x3 box constraints, fills empty cells with valid numbers, and uses backtracking to find the correct Sudoku solution.
